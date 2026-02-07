@@ -1,0 +1,969 @@
+/*
+ * PawHome Pink Theme - Design System
+ * Modern, warm pink-based design with brown accents
+ * Cute, professional, and trustworthy aesthetic
+ */
+
+/* ========================================
+   COLOR SYSTEM
+   ======================================== */
+
+:root {
+    /* Primary Pink System */
+    --primary-color: #FF9EBA;
+    --primary-hover: #FF85AA;
+    --primary-light: #FFE4ED;
+    --primary-dark: #E6799B;
+
+    /* Secondary Brown/Cocoa System */
+    --secondary-color: #A67C6D;
+    --secondary-hover: #8B6759;
+    --secondary-light: #D4C0B8;
+
+    /* Background Cream/Beige System */
+    --bg-color: #FFF8F5;
+    --bg-secondary: #FFF3ED;
+    --bg-tertiary: #FFFBF7;
+
+    /* Accent Peach/Orange for CTAs */
+    --accent-color: #FFB88C;
+    --accent-hover: #FFA066;
+
+    /* Text Colors */
+    --text-color: #3D2F2B;
+    --text-secondary: #7A6B66;
+    --text-muted: #A89A96;
+
+    /* Semantic Colors */
+    --success-color: #96CEB4;
+    --warning-color: #FFEAA7;
+    --danger-color: #FF7675;
+    --info-color: #74B9FF;
+
+    /* Trust/Premium Gold/Brown System */
+    --trust-gold: #D4A76A;
+    --trust-bronze: #CD7F32;
+    --trust-brown: #8B5A3C;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #FF9EBA 0%, #FFB3C6 100%);
+    --gradient-warm: linear-gradient(135deg, #FFB88C 0%, #FF9EBA 100%);
+    --gradient-trust: linear-gradient(135deg, #D4A76A 0%, #B08968 100%);
+    --gradient-brown: linear-gradient(135deg, #A67C6D 0%, #8B6759 100%);
+    --gradient-soft: linear-gradient(to bottom, #FFF8F5 0%, #FFFBF7 100%);
+
+    /* Shadow System - Soft, no harsh borders */
+    --shadow-xs: 0 2px 8px rgba(255, 158, 186, 0.08);
+    --shadow-sm: 0 4px 12px rgba(255, 158, 186, 0.12);
+    --shadow-md: 0 8px 24px rgba(255, 158, 186, 0.15);
+    --shadow-lg: 0 12px 32px rgba(255, 158, 186, 0.18);
+    --shadow-xl: 0 20px 48px rgba(255, 158, 186, 0.22);
+    --shadow-trust: 0 4px 16px rgba(166, 124, 109, 0.15);
+
+    /* Override old card-shadow for compatibility */
+    --card-shadow: 0 8px 24px rgba(255, 158, 186, 0.15);
+
+    /* Border Radius Scale */
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 15px;
+    --radius-lg: 20px;
+    --radius-xl: 25px;
+    --radius-full: 50%;
+
+    /* Spacing Scale */
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+
+    /* Typography */
+    --font-primary: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 24px;
+    --text-2xl: 28px;
+    --text-3xl: 36px;
+
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ========================================
+   GLOBAL OVERRIDES
+   ======================================== */
+
+/* Body Background - Soft cream gradient instead of purple */
+body {
+    background: var(--gradient-soft) !important;
+    color: var(--text-color);
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+/* Bottom Navigation */
+.bottom-nav {
+    background: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-btn {
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+}
+
+.nav-btn:hover {
+    color: var(--primary-color);
+    background: var(--primary-light);
+}
+
+.nav-btn.active {
+    color: var(--primary-color);
+    background: var(--primary-light);
+    border-top: 3px solid var(--primary-color);
+}
+
+/* Desktop Side Navigation */
+@media (min-width: 1024px) {
+    .bottom-nav {
+        background: white;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-btn.active {
+        background: linear-gradient(90deg, var(--primary-light) 0%, transparent 100%);
+        border-right: 4px solid var(--primary-color);
+        border-top: none;
+    }
+}
+
+/* ========================================
+   PET FINDER & BREEDING CARDS
+   ======================================== */
+
+/* Pet Cards */
+.pet-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--primary-light);
+    transition: transform 0.6s, box-shadow 0.3s;
+}
+
+.pet-card:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+/* Swipe Visual Feedback */
+.pet-card.swiping-right {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 32px rgba(255, 158, 186, 0.4);
+}
+
+.pet-card.swiping-left {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 32px rgba(255, 118, 117, 0.4);
+}
+
+/* Card Back - Brown Gradient for Caregiver Info */
+.card-back {
+    background: var(--gradient-brown) !important;
+}
+
+/* Flip Button */
+.flip-btn {
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.flip-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.flip-back-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    transition: all var(--transition-base);
+}
+
+.flip-back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   SWIPE BUTTONS
+   ======================================== */
+
+.swipe-btn {
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.swipe-btn.like {
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-md);
+    color: white;
+}
+
+.swipe-btn.like:hover {
+    transform: scale(1.15);
+    box-shadow: var(--shadow-xl);
+}
+
+.swipe-btn.reject {
+    background: white !important;
+    color: var(--danger-color);
+    border: 3px solid var(--danger-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.swipe-btn.reject:hover {
+    transform: scale(1.15);
+    box-shadow: var(--shadow-md);
+    background: var(--danger-color) !important;
+    color: white;
+}
+
+.swipe-btn:active {
+    transform: scale(0.95);
+}
+
+/* Reload Button */
+.reload-btn {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.reload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   BREEDING - GENETIC & HEALTH SECTIONS
+   ======================================== */
+
+.genetic-match {
+    background: var(--gradient-warm) !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.health-check {
+    background: var(--gradient-trust) !important;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-add-breeding {
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.btn-add-breeding:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   MARKETPLACE - SERVICE CARDS
+   ======================================== */
+
+.services-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--bg-secondary);
+    transition: all var(--transition-base);
+}
+
+.service-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(4px);
+    border-color: var(--primary-light);
+}
+
+.service-type {
+    background: var(--accent-color);
+    color: white;
+    border-radius: var(--radius-sm);
+    padding: 4px 12px;
+    font-weight: var(--weight-semibold);
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    background: var(--bg-secondary);
+    padding: 8px;
+    border-radius: var(--radius-md);
+}
+
+.filter-tab {
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
+}
+
+.filter-tab:hover {
+    background: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.filter-tab.active {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   PROFILE & TRUST SYSTEM
+   ======================================== */
+
+.profile-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Profile Avatar */
+.profile-avatar {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-md);
+}
+
+/* Stats Grid */
+.stat-card {
+    background: var(--gradient-primary) !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Trust Badge - Gold/Brown Theme */
+.verified-badge {
+    background: var(--gradient-trust);
+    color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-trust);
+}
+
+.profile-role {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+}
+
+/* Settings List */
+.settings-list {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.setting-item {
+    background: white;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-base);
+}
+
+.setting-item:hover {
+    background: var(--primary-light);
+}
+
+/* Info Items */
+.info-item {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+/* Action Cards */
+.action-card {
+    background: var(--gradient-warm);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.action-card.trust {
+    background: var(--gradient-trust) !important;
+}
+
+/* ========================================
+   MATCHES & CHAT
+   ======================================== */
+
+.matches-tabs {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 8px;
+}
+
+.match-tab {
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
+}
+
+.match-tab:hover {
+    background: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.match-tab.active {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Match Cards */
+.match-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Unread Badge */
+.unread-badge {
+    background: var(--danger-color);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Chat Header */
+.chat-header {
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-md);
+}
+
+.chat-messages {
+    background: var(--gradient-soft);
+}
+
+/* Message Bubbles */
+.message.sent .message-content {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.message:not(.sent) .message-content {
+    background: white;
+    border: 2px solid var(--primary-light);
+    box-shadow: var(--shadow-xs);
+}
+
+/* ========================================
+   MATCH MODAL & ANIMATIONS
+   ======================================== */
+
+.match-animation {
+    border-radius: var(--radius-xl);
+    background: white;
+    box-shadow: var(--shadow-xl);
+}
+
+.match-icon i {
+    color: var(--primary-color);
+}
+
+/* ========================================
+   AUTH & ONBOARDING
+   ======================================== */
+
+.auth-page {
+    background: var(--gradient-soft) !important;
+}
+
+.auth-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+.auth-logo h1 {
+    color: var(--primary-color);
+}
+
+/* Auth Form Inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 158, 186, 0.1);
+    outline: none;
+}
+
+/* Auth Button */
+.auth-btn {
+    background: var(--gradient-primary) !important;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-toggle a {
+    color: var(--primary-color);
+}
+
+/* ========================================
+   ADMIN PANEL
+   ======================================== */
+
+.admin-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Admin Stats */
+.admin-stat-card {
+    background: var(--gradient-primary) !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Admin Tabs */
+.admin-tabs {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 8px;
+}
+
+.admin-tab {
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
+}
+
+.admin-tab:hover {
+    background: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.admin-tab.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Admin Table */
+.admin-table thead {
+    background: var(--gradient-brown) !important;
+}
+
+.admin-table tbody tr:hover {
+    background: var(--primary-light);
+}
+
+/* Admin Buttons */
+.admin-btn-primary {
+    background: var(--gradient-primary) !important;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.admin-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.admin-btn-secondary {
+    background: var(--secondary-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.admin-btn-secondary:hover {
+    background: var(--secondary-hover);
+}
+
+/* Status Badges */
+.status-badge.available {
+    background: var(--success-color);
+}
+
+.status-badge.adopted {
+    background: var(--info-color);
+}
+
+.status-badge.reserved {
+    background: var(--warning-color);
+    color: var(--text-color);
+}
+
+/* Role Badges */
+.role-badge.admin {
+    background: var(--gradient-brown);
+}
+
+.role-badge.pet-owner {
+    background: var(--gradient-primary);
+}
+
+.role-badge.caregiver {
+    background: var(--gradient-trust);
+}
+
+.role-badge.business {
+    background: var(--secondary-color);
+}
+
+/* ========================================
+   BUSINESS DASHBOARD
+   ======================================== */
+
+.business-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.business-stat-card {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.business-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.business-service-card {
+    background: white;
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.business-service-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.business-btn-primary {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.business-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   NOTIFICATIONS
+   ======================================== */
+
+.notification-bell {
+    color: var(--text-secondary);
+    transition: color var(--transition-base);
+}
+
+.notification-bell:hover {
+    color: var(--primary-color);
+}
+
+.notification-badge {
+    background: var(--danger-color);
+    box-shadow: var(--shadow-xs);
+}
+
+.notification-item {
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-base);
+}
+
+.notification-item:hover {
+    background: var(--primary-light);
+}
+
+.notification-item.unread {
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Notification Tabs */
+.notification-tab {
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
+}
+
+.notification-tab:hover {
+    background: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.notification-tab.active {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Like Cards */
+.like-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.like-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   MODALS
+   ======================================== */
+
+.modal-content {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--bg-secondary);
+}
+
+.modal-close {
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+}
+
+.modal-close:hover {
+    color: var(--danger-color);
+    transform: rotate(90deg);
+}
+
+.primary-btn {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.secondary-btn {
+    background: var(--secondary-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.secondary-btn:hover {
+    background: var(--secondary-hover);
+}
+
+/* ========================================
+   TRUST INDICATOR SYSTEM (New)
+   ======================================== */
+
+.trust-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    transition: all var(--transition-base);
+}
+
+.trust-level-high {
+    background: var(--gradient-trust);
+    color: white;
+    box-shadow: var(--shadow-trust);
+}
+
+.trust-level-verified {
+    background: var(--trust-gold);
+    color: var(--text-color);
+    border: 2px solid rgba(212, 167, 106, 0.3);
+}
+
+.trust-level-medium {
+    background: var(--secondary-light);
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.trust-level-new {
+    background: var(--primary-light);
+    color: var(--primary-color);
+}
+
+/* ========================================
+   ICON COLORS
+   ======================================== */
+
+.icon-primary {
+    color: var(--primary-color);
+}
+
+.icon-trust {
+    color: var(--trust-gold);
+}
+
+.icon-secondary {
+    color: var(--secondary-color);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.bg-cream {
+    background: var(--bg-color);
+}
+
+.bg-peach {
+    background: var(--bg-secondary);
+}
+
+/* ========================================
+   MICRO-ANIMATIONS
+   ======================================== */
+
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pulse-gentle {
+    animation: gentlePulse 2s ease-in-out infinite;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --space-xs: 6px;
+        --space-sm: 10px;
+        --space-md: 14px;
+        --space-lg: 20px;
+    }
+
+    .card,
+    .pet-card,
+    .service-card,
+    .match-card {
+        border-radius: var(--radius-md);
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY - FOCUS STATES
+   ======================================== */
+
+button:focus,
+.btn:focus,
+.nav-btn:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* For elements that already have focus styles */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none; /* Already has custom focus with box-shadow */
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    body {
+        background: white !important;
+    }
+}

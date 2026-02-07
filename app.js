@@ -509,21 +509,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Authentication Functions
 function checkAuth() {
-    const user = localStorage.getItem('pawHomeUser');
-    if (user) {
-        currentUser = JSON.parse(user);
-        currentUserId = currentUser.id; // อัพเดต currentUserId จาก localStorage
-        console.log('✅ User authenticated, ID:', currentUserId);
-        showMainApp();
-        initNotifications(); // เริ่มระบบ notifications ถ้ามี user อยู่แล้ว
-        
-        // Join socket after user is authenticated
-        if (socket && isSocketConnected && currentUserId) {
-            socket.emit('user:join', currentUserId);
-        }
-    } else {
-        showAuthPage();
-    }
+    // BYPASS LOGIN FOR DEMO - Auto-login with mock user
+    const mockUser = {
+        id: 1,
+        name: 'Demo User',
+        email: 'demo@pawhome.com',
+        role: 'pet_owner'
+    };
+
+    currentUser = mockUser;
+    currentUserId = mockUser.id;
+    console.log('✅ Auto-logged in as Demo User (ID:', currentUserId, ')');
+    showMainApp();
+
+    // Note: Real authentication disabled for UI demo
+    // Original code:
+    // const user = localStorage.getItem('pawHomeUser');
+    // if (user) {
+    //     currentUser = JSON.parse(user);
+    //     currentUserId = currentUser.id;
+    //     console.log('✅ User authenticated, ID:', currentUserId);
+    //     showMainApp();
+    //     initNotifications();
+    //
+    //     if (socket && isSocketConnected && currentUserId) {
+    //         socket.emit('user:join', currentUserId);
+    //     }
+    // } else {
+    //     showAuthPage();
+    // }
 }
 
 function showAuthPage() {
@@ -536,26 +550,32 @@ function showAuthPage() {
 function showMainApp() {
     document.getElementById('authPage').style.display = 'none';
     document.getElementById('mainApp').style.display = 'block';
-    
+
+    console.log('🎨 Pink theme active! Main app displayed.');
+
     // Request notification permission
     if ('Notification' in window && Notification.permission === 'default') {
         Notification.requestPermission();
     }
-    
-    // Initialize Socket.IO
-    initializeSocket();
-    
+
+    // Skip Socket.IO - no backend available
+    // initializeSocket();
+
     // Initialize app components
-    initNavigation();
-    adjustNavigationByRole(); // Show admin/business menu based on role
-    initPetFinder();
-    initBreeding();
-    initServices();
-    initMatches();
-    initChatInput();
-    initProfile();
-    initAdmin(); // Initialize admin panel
-    initBusinessDashboard(); // Initialize business dashboard
+    try {
+        initNavigation();
+        adjustNavigationByRole(); // Show admin/business menu based on role
+        initPetFinder();
+        initBreeding();
+        initServices();
+        initMatches();
+        initChatInput();
+        initProfile();
+        initAdmin(); // Initialize admin panel
+        initBusinessDashboard(); // Initialize business dashboard
+    } catch (error) {
+        console.log('⚠️ Some features may not work without backend:', error.message);
+    }
 }
 
 function showLogin() {

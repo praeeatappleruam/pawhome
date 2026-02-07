@@ -6,13 +6,14 @@
     <title>PawHome - Find Your Perfect Pet Match</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme-pink.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Socket.IO Client -->
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 </head>
 <body>
-    <!-- Login/Register Page -->
-    <div class="auth-page" id="authPage">
+    <!-- Login/Register Page - HIDDEN FOR DEMO -->
+    <div class="auth-page" id="authPage" style="display: none !important;">
         <div class="auth-container">
             <div class="auth-logo">
                 <img src="logo.png" alt="PawHome Logo" style="width: 300px; height: 180px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
@@ -78,8 +79,8 @@
         </div>
     </div>
 
-    <!-- Main App -->
-    <div class="main-app" id="mainApp" style="display: none;">
+    <!-- Main App - SHOWN BY DEFAULT FOR DEMO -->
+    <div class="main-app" id="mainApp" style="display: block !important;">
     
     <!-- Notification Bell -->
     <button class="notification-bell" onclick="showNotifications()" id="notificationBell">
